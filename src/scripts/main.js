@@ -1,15 +1,7 @@
 // Main
 "use strict";
 
-$('#inputImage').on('change', function () {
-	get_API_img();
-})
-$('#ownImage').on('change', function () {
-	get_API_img();
-})
-$(document).ready(function () {
-	get_API_img();
-});
+
 
 
 
@@ -26,9 +18,10 @@ function setKey() {
 		document.getElementById("keyAPI").style.borderColor = document.getElementById("inputImage").style.borderColor;
 	}
 }
+
 function get_API_img() {
-	var faceid_of_input = "";
-	var faceid_of_you = "";
+	var faceid_of_input = new Array();
+	var faceid_of_you = new Array();
 	//get key
 	var subscriptionKey = document.getElementById("keyAPI").value;
 
@@ -46,15 +39,12 @@ function get_API_img() {
 	document.querySelector("#sourceImage_1").src = sourceImageUrl_input;
 	var sourceImageUrl_owner = document.getElementById("ownImage").value;
 	document.querySelector("#sourceImage_2").src = sourceImageUrl_owner;
-	
-	
 
 	///////////////////////////////////
 	// Perform the REST API call.
 	// ajax input
 	$.ajax({
 			url: uriBase + "?" + $.param(params),
-
 			// Request headers.
 			beforeSend: function (xhrObj) {
 				xhrObj.setRequestHeader("Content-Type", "application/json");
@@ -68,11 +58,13 @@ function get_API_img() {
 		})
 
 		.done(function (data) {
-			console.log("input");
+			console.log("FaceID of Input");
 			for (var i = 0; i < data.length; i++) {
-				faceid_of_input = data[i].faceId;
-				console.log(faceid_of_input);
+				faceid_of_input[i] = data[i].faceId;
 			}
+			$("#responseTextArea_1").val(JSON.stringify(faceid_of_input, null, 4));
+			console.log(faceid_of_input);
+			console.log(faceid_of_input.length);
 		})
 		.fail(function (jqXHR, textStatus, errorThrown) {
 			// Display error message.
@@ -84,10 +76,10 @@ function get_API_img() {
 				jQuery.parseJSON(jqXHR.responseText).error.message;
 			alert(errorString);
 		});
+	console.log(faceid_of_input.length);
 	////////////////////////////
 	//ajax owner
-	$
-		.ajax({
+	$.ajax({
 			url: uriBase + "?" + $.param(params),
 
 			// Request headers.
@@ -104,8 +96,8 @@ function get_API_img() {
 			for (var i = 0; i < data.length; i++) {
 				faceid_of_you = data[i].faceId;
 				console.log(faceid_of_you);
-				
 			}
+			$("#responseTextArea_2").val(JSON.stringify(faceid_of_you, null, 4));
 		})
 
 		.fail(function (jqXHR, textStatus, errorThrown) {
@@ -120,12 +112,13 @@ function get_API_img() {
 		});
 	////////////////////////////
 	//ajax verify face to face
-	var params_verify= {
+	var params_verify = {
 		// Request parameters
 	};
-	$(function () {
+
+	for (var i = 0; i < faceid_of_input.length; i++) {
 		$.ajax({
-				url: uriBase+ "?" + $.param(params_verify),
+				url: uriBase + "?" + $.param(params_verify),
 				// Request headers.
 				beforeSend: function (xhrObj) {
 					xhrObj.setRequestHeader("Content-Type", "application/json");
@@ -133,7 +126,13 @@ function get_API_img() {
 				},
 				type: "POST",
 				// Request body.
-				data: '{"faceId1": "' + faceid_of_input + '","faceId2": "' + faceid_of_you + '"}',
+				data: '{"faceId1": "' + document.getElementById('faceid_of_input').innerText + '","faceId2": "' + faceid_of_you + '"}',
+				// {
+				// 	"faceId1": "c5c24a82-6845-4031-9d5d-978df9175426",
+				// 	"faceId2": "815df99c-598f-4926-930a-a734b3fd651c"
+				// }
+
+
 			})
 			.done(function (data) {
 				console.log(data.isIdentical);
@@ -150,5 +149,23 @@ function get_API_img() {
 					jQuery.parseJSON(jqXHR.responseText).error.message;
 				alert(errorString);
 			});
-	});
+	}
+
 }
+
+
+
+
+
+
+
+
+$('#inputImage').on('change', function () {
+	get_API_img();
+})
+$('#ownImage').on('change', function () {
+	get_API_img();
+})
+$(document).ready(function () {
+	get_API_img();
+});

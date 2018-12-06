@@ -6346,5 +6346,10 @@ body {
       display: none; }
   body .home .input .img img {
     max-width: 200px; }
+  body .home .output h2 {
+    color: #ffffff; }
+  body .home .output .UIInput {
+    min-width: 500px;
+    min-height: 500px; }
 
 /*# sourceMappingURL=main.css.map */
