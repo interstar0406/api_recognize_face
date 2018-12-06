@@ -120,7 +120,7 @@ function get_API_img() {
 				},
 				type: "POST",
 				// Request body.
-				data: '{"faceId1": "' + document.getElementById('responseTextArea_1').innerText + '","faceId2": "' + document.getElementById('responseTextArea_2').innerText + '"}',
+				data: '{"faceId1": "12892ed8-ff96-4192-bcba-59d25771801a","faceId2": "d60ede49-e9b5-48e4-9d2b-6f426c2f3df3"}',
 				// {
 				// 	"faceId1": "c5c24a82-6845-4031-9d5d-978df9175426",
 				// 	"faceId2": "815df99c-598f-4926-930a-a734b3fd651c"
@@ -146,9 +146,9 @@ function get_API_img() {
 	}
 
 
-	//get obj
-	var obj = JSON.parse($("#responseTextArea_2").text())
-	console.log(obj);
+	// //get obj
+	// var obj = JSON.parse($("#responseTextArea_2").text())
+	// console.log(obj);
 }
 
 
