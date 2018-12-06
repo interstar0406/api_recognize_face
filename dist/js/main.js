@@ -123,33 +123,31 @@ function get_API_img() {
 		// Request parameters
 	};
 
-	for (var i = 0; i < faceid_of_input.length; i++) {
-		$.ajax({
-			url: uriBase + "?" + $.param(params_verify),
-			// Request headers.
-			beforeSend: function beforeSend(xhrObj) {
-				xhrObj.setRequestHeader("Content-Type", "application/json");
-				xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-			},
-			type: "POST",
-			// Request body.
-			data: '{"faceId1": "12892ed8-ff96-4192-bcba-59d25771801a","faceId2": "d60ede49-e9b5-48e4-9d2b-6f426c2f3df3"}'
-			// {
-			// 	"faceId1": "c5c24a82-6845-4031-9d5d-978df9175426",
-			// 	"faceId2": "815df99c-598f-4926-930a-a734b3fd651c"
-			// }
+	$.ajax({
+		url: uriBase + "?" + $.param(params_verify),
+		// Request headers.
+		beforeSend: function beforeSend(xhrObj) {
+			xhrObj.setRequestHeader("Content-Type", "application/json");
+			xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+		},
+		type: "POST",
+		// Request body.
+		data: '{"faceId1": "12892ed8-ff96-4192-bcba-59d25771801a","faceId2": "d60ede49-e9b5-48e4-9d2b-6f426c2f3df3"}'
+		// {
+		// 	"faceId1": "c5c24a82-6845-4031-9d5d-978df9175426",
+		// 	"faceId2": "815df99c-598f-4926-930a-a734b3fd651c"
+		// }
 
 
-		}).done(function (data) {
-			console.log(data.isIdentical);
-			console.log(data.confidence);
-		}).fail(function (jqXHR, textStatus, errorThrown) {
-			// Display error message.
-			var errorString = errorThrown === "" ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
-			errorString += jqXHR.responseText === "" ? "" : jQuery.parseJSON(jqXHR.responseText).message ? jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
-			alert(errorString);
-		});
-	}
+	}).done(function (data) {
+		$('#isIdentical').text = data.isIdentical;
+		$('#confidence').text = data.confidence;
+	}).fail(function (jqXHR, textStatus, errorThrown) {
+		// Display error message.
+		var errorString = errorThrown === "" ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+		errorString += jqXHR.responseText === "" ? "" : jQuery.parseJSON(jqXHR.responseText).message ? jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
+		alert(errorString);
+	});
 
 	// //get obj
 	// var obj = JSON.parse($("#responseTextArea_2").text())
