@@ -1,0 +1,36 @@
+extends _layout/layout
+
+block variables
+	- var title = 'Home'
+	- var description = 'Description for home page'
+	- var bodyclass = 'home'
+
+block body
+	section.home
+		h1.mt-5.mb-5.text-center Detect Faces
+		.container
+			.row.input
+				.col-md-6
+					.input-img
+						p Link image to verify
+						//-image to verify
+						input#inputImage(type="text" name="inputImage" value="https://lh3.googleusercontent.com/AcKc3QuMuGgxx9KvTPOohwIzoH33xUWKx7llhkqWFLHsIAANkKfY3YeKz-G4jZ0su190nJFfDi1kVYw-bthvtdhJD2aRa6TFBrvyFHmZBbNXyGsWdI3pY5jNnCBJPgWiY57_feVT36wDwht2Bqkm6x0K9jzhU5wMGajYEz319KmQQXBBlcJTj4fSpDVr4QIN8-Z37pzEz_aWvwwGswybBAVVurK0kEgRuREHJrmCXAJk1DCpc5K2pXir9LO0Eazs6zixINUECaWLzggUr3Kl4_9EsMu-Lv4t1oLN91yO8GJ50-hPOmdjTp_ips1td9XsN_FnfHx79HzrhPnCCp_gsCnnjALiIZ5PYYCyxtM5fSeWpiwYtAfbqHLV6OZOAcA8o9p6_dzuCPCv4R3VXx64LG5tdcErOtBQzxM8aOsSA6fg-_dF_emCmabbP0RDRsyHIH_cqCjgOa40oNBxxV6MCbLmALpMxYvvfBSIIdKvVIFotLlHvP247j-VtWU2FkgIj96U5yChHsdY-ppzFGLxjVda7oTqOYcudCjBEGfTdiWx86FBIwP6xSvoNUFxBTq-KHniU9xY2LVzdhaMKPyHdcKIKl50o_nfhRq6_u0usLvDl2j_4pFpNWHtF4Uo_yVmVLb-WLU7dsKKbx7gFGLlnpY=w1102-h618-no")
+
+						p Link image of you
+						//-image of you
+						input#ownImage(type="text" name="inputImage" value="https://lh3.googleusercontent.com/psvHTYRHlUpT8mgUecMuICPeZQUcCZ6DrVwlJRGKkK2h5buZmDjbUpkTO9_ym81hRu_WtS63cr5Z8u2ZxnaBUqUSekihlliBiRWfweuos0TErw5CWcJjJyDhoCm-YfxOHB-l3o2fl1zGh8vuF8IqynHBCom5agm4NJX5njQr--bdWmgNciIVwu3OXzDyEOFzoWANzTbgDHD_nnZfg_OyYzAQ4LePLxaQaklVawzNWkvlVtD0SJZKJ1T-Pn6LvTlqxO2QVyMv70qycP_FkKUVnXOPnOUvyVPd4NK2GnN-cV4i8rxTp04HaOkrB3WxxSGLN0dNK5P8ejp0cqExQAbF-jiMkXDXhFusrEpyHq68mCHoRgScwBqeayxhtX4I1a1o7RBMMzb7T5Yqn-MJsbhl17bpvlhNeDKZKculFrMtd1Nqv3EdlYIN2q0yM3m62j9duJ3H6ceANWCz50xEARX7Wu5JWoCYPup1j68_RuWWB7SDW-V1tIWjHAHj7bjv4V_TFBjXKeHOC2HUOFcFHGhH_p-vwoWICUEsE6IKUUoRptPm8BT9DahV8luqE6SAZfZhb6eIOXDkulT5x8P5R9xzXTIx-8qmUlLJbF5uPNszWqjgTktGkfGAmf2kNKxL85VT9YH6zFlJ1AQJDB6bS8HNVEQ=w464-h618-no")
+						
+						//-key
+						input#keyAPI(type="text" name="keyAPI" value="7907b45b21c34f13abd78096339cd1fb" onblur="setKey()")
+				.col-md-6
+					.row.img
+						.col
+							label(for="#sourceImage_1") Display image input
+							img.img-fluid#sourceImage_1()
+						.col
+							label(for="#sourceImage_2") Display image of mine
+							img.img-fluid#sourceImage_2()
+			.row.output.mt-5
+				.col
+					#jsonOutput
+						h2.text-center.mb-5 Response
