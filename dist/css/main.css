@@ -6354,5 +6354,8 @@ body {
   body .face2face input {
     min-width: 300px;
     padding-left: 1rem; }
+  body .face2face #isIdentical {
+    color: red;
+    font-size: 2rem; }
 
 /*# sourceMappingURL=main.css.map */
