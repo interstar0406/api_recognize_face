@@ -1,7 +1,7 @@
 {
-	"name": "fullstackvietnam",
+	"name": "api",
 	"version": "1.0.0",
-	"description": "Fullstack Vietnam lò đào tạo lập trình viên, designer chuyên nghiệp tại Sài Gòn. Chúng tôi là các chuyên gia uy tín trong lĩnh vực lập trình ứng dụng, thiết kế và sáng tạo. Gọi: 0 96 96 89 89 3",
+	"description": "Đồ án nhận dạng và so sánh khuôn mặt",
 	"main": "index.js",
 	"scripts": {
 		"start": "gulp",
@@ -9,14 +9,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/fullstackvietnam/fs-03-web-app.git"
+		"url": "git+https://github.com/interstar0406/api_recognize_face"
 	},
-	"author": "FullStack VietNam",
+	"author": "Quốc Cường Trần",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/fullstackvietnam/fs-03-web-app/issues"
+		"url": "https://github.com/interstar0406/api_recognize_face"
 	},
-	"homepage": "https://fullstackvietnam.com",
+	"homepage": "",
 	"dependencies": {
 		"ajax": "0.0.4",
 		"babel-core": "^6.26.3",
