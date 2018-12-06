@@ -89,10 +89,10 @@
     <main>
       <section class="home">
         <h1 class="mt-5 mb-5 text-center">Nhận dạng gương mặt</h1>
+        <h2 class="text-center mb-3">1.Nhập đường dẫn cho các ảnh</h2>
         <div class="container">
-          <div class="row input">
+          <div class="row input mt-5">
             <div class="col-md-6">
-              <h2 class="text-center">Nhập đường dẫn cho các ảnh</h2>
               <div class="input-img">
                 <p>Đường dẫn ảnh đầu vào</p>
                 <input id="inputImage" type="text" name="inputImage" value="https://lh3.googleusercontent.com/AcKc3QuMuGgxx9KvTPOohwIzoH33xUWKx7llhkqWFLHsIAANkKfY3YeKz-G4jZ0su190nJFfDi1kVYw-bthvtdhJD2aRa6TFBrvyFHmZBbNXyGsWdI3pY5jNnCBJPgWiY57_feVT36wDwht2Bqkm6x0K9jzhU5wMGajYEz319KmQQXBBlcJTj4fSpDVr4QIN8-Z37pzEz_aWvwwGswybBAVVurK0kEgRuREHJrmCXAJk1DCpc5K2pXir9LO0Eazs6zixINUECaWLzggUr3Kl4_9EsMu-Lv4t1oLN91yO8GJ50-hPOmdjTp_ips1td9XsN_FnfHx79HzrhPnCCp_gsCnnjALiIZ5PYYCyxtM5fSeWpiwYtAfbqHLV6OZOAcA8o9p6_dzuCPCv4R3VXx64LG5tdcErOtBQzxM8aOsSA6fg-_dF_emCmabbP0RDRsyHIH_cqCjgOa40oNBxxV6MCbLmALpMxYvvfBSIIdKvVIFotLlHvP247j-VtWU2FkgIj96U5yChHsdY-ppzFGLxjVda7oTqOYcudCjBEGfTdiWx86FBIwP6xSvoNUFxBTq-KHniU9xY2LVzdhaMKPyHdcKIKl50o_nfhRq6_u0usLvDl2j_4pFpNWHtF4Uo_yVmVLb-WLU7dsKKbx7gFGLlnpY=w1102-h618-no">
@@ -102,11 +102,11 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="row img">
-                <div class="col">
+              <div class="row img mt-5 mt-md-0">
+                <div class="col-sm-6">
                   <label for="#sourceImage_1">Ảnh đầu vào</label><img class="img-fluid" id="sourceImage_1">
                 </div>
-                <div class="col">
+                <div class="col-sm-6">
                   <label for="#sourceImage_2">Ảnh chủ nhà</label><img class="img-fluid" id="sourceImage_2">
                 </div>
               </div>
@@ -114,15 +114,15 @@
           </div>
           <div class="row output mt-5">
             <div class="col">
-              <h2 class="text-center mb-5">ID khuôn mặt nhận được từ Azure</h2>
+              <h2 class="text-center mb-5">2.ID khuôn mặt nhận được từ Azure</h2>
               <div class="row">
                 <div class="col">
                   <h3 class="mb-3">Từ ảnh đầu vào</h3>
-                  <textarea class="UIInput" id="responseTextArea_1"></textarea>
+                  <textarea id="responseTextArea_1"></textarea>
                 </div>
                 <div class="col">
                   <h3 class="mb-3">Từ ảnh chủ nhà</h3>
-                  <p class="UIInput" id="responseTextArea_2"></p>
+                  <p id="responseTextArea_2"></p>
                 </div>
               </div>
             </div>
@@ -130,7 +130,7 @@
         </div>
       </section>
       <section class="face2face">
-        <h2 class="text-center mb-5 mt-5">So sánh </h2>
+        <h2 class="text-center mb-5 mt-5">3.So sánh </h2>
         <div class="container">
           <div class="row input_faceid">
             <div class="col-md-6">

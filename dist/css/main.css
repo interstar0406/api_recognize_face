@@ -6324,6 +6324,8 @@ html, body {
 
 body {
   background: #c5c5c4; }
+  body h2 {
+    color: #1e5d5d; }
   body .home h1 {
     color: #ffffff; }
   body .home .input .input-img {
@@ -6345,10 +6347,8 @@ body {
     body .home .input .input-img #keyAPI {
       display: none; }
   body .home .input .img img {
-    max-width: 200px; }
-  body .home .output h2 {
-    color: #ffffff; }
-  body .home .output .UIInput {
+    max-width: 80%; }
+  body .home .output textarea {
     min-width: 500px;
     min-height: 500px; }
   body .face2face input {
