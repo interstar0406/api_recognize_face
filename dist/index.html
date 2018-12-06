@@ -88,14 +88,14 @@
 <!-- ////////////// Begin Main ////////////// -->
     <main>
       <section class="home">
-        <h1 class="mt-5 mb-5 text-center">Detect Faces</h1>
+        <h1 class="mt-5 mb-5 text-center">Nhận dạng gương mặt</h1>
         <div class="container">
           <div class="row input">
             <div class="col-md-6">
               <div class="input-img">
-                <p>Link image to verify</p>
+                <p>Đường dẫn ảnh đầu vào</p>
                 <input id="inputImage" type="text" name="inputImage" value="https://lh3.googleusercontent.com/AcKc3QuMuGgxx9KvTPOohwIzoH33xUWKx7llhkqWFLHsIAANkKfY3YeKz-G4jZ0su190nJFfDi1kVYw-bthvtdhJD2aRa6TFBrvyFHmZBbNXyGsWdI3pY5jNnCBJPgWiY57_feVT36wDwht2Bqkm6x0K9jzhU5wMGajYEz319KmQQXBBlcJTj4fSpDVr4QIN8-Z37pzEz_aWvwwGswybBAVVurK0kEgRuREHJrmCXAJk1DCpc5K2pXir9LO0Eazs6zixINUECaWLzggUr3Kl4_9EsMu-Lv4t1oLN91yO8GJ50-hPOmdjTp_ips1td9XsN_FnfHx79HzrhPnCCp_gsCnnjALiIZ5PYYCyxtM5fSeWpiwYtAfbqHLV6OZOAcA8o9p6_dzuCPCv4R3VXx64LG5tdcErOtBQzxM8aOsSA6fg-_dF_emCmabbP0RDRsyHIH_cqCjgOa40oNBxxV6MCbLmALpMxYvvfBSIIdKvVIFotLlHvP247j-VtWU2FkgIj96U5yChHsdY-ppzFGLxjVda7oTqOYcudCjBEGfTdiWx86FBIwP6xSvoNUFxBTq-KHniU9xY2LVzdhaMKPyHdcKIKl50o_nfhRq6_u0usLvDl2j_4pFpNWHtF4Uo_yVmVLb-WLU7dsKKbx7gFGLlnpY=w1102-h618-no">
-                <p>Link image of you</p>
+                <p>Đường dẫn ảnh của chủ nhà</p>
                 <input id="ownImage" type="text" name="inputImage" value="https://lh3.googleusercontent.com/psvHTYRHlUpT8mgUecMuICPeZQUcCZ6DrVwlJRGKkK2h5buZmDjbUpkTO9_ym81hRu_WtS63cr5Z8u2ZxnaBUqUSekihlliBiRWfweuos0TErw5CWcJjJyDhoCm-YfxOHB-l3o2fl1zGh8vuF8IqynHBCom5agm4NJX5njQr--bdWmgNciIVwu3OXzDyEOFzoWANzTbgDHD_nnZfg_OyYzAQ4LePLxaQaklVawzNWkvlVtD0SJZKJ1T-Pn6LvTlqxO2QVyMv70qycP_FkKUVnXOPnOUvyVPd4NK2GnN-cV4i8rxTp04HaOkrB3WxxSGLN0dNK5P8ejp0cqExQAbF-jiMkXDXhFusrEpyHq68mCHoRgScwBqeayxhtX4I1a1o7RBMMzb7T5Yqn-MJsbhl17bpvlhNeDKZKculFrMtd1Nqv3EdlYIN2q0yM3m62j9duJ3H6ceANWCz50xEARX7Wu5JWoCYPup1j68_RuWWB7SDW-V1tIWjHAHj7bjv4V_TFBjXKeHOC2HUOFcFHGhH_p-vwoWICUEsE6IKUUoRptPm8BT9DahV8luqE6SAZfZhb6eIOXDkulT5x8P5R9xzXTIx-8qmUlLJbF5uPNszWqjgTktGkfGAmf2kNKxL85VT9YH6zFlJ1AQJDB6bS8HNVEQ=w464-h618-no">
                 <input id="keyAPI" type="text" name="keyAPI" value="7907b45b21c34f13abd78096339cd1fb" onblur="setKey()">
               </div>
@@ -103,38 +103,50 @@
             <div class="col-md-6">
               <div class="row img">
                 <div class="col">
-                  <label for="#sourceImage_1">Display image input</label><img class="img-fluid" id="sourceImage_1">
+                  <label for="#sourceImage_1">Ảnh đầu vào</label><img class="img-fluid" id="sourceImage_1">
                 </div>
                 <div class="col">
-                  <label for="#sourceImage_2">Display image of mine</label><img class="img-fluid" id="sourceImage_2">
+                  <label for="#sourceImage_2">Ảnh chủ nhà</label><img class="img-fluid" id="sourceImage_2">
                 </div>
               </div>
             </div>
           </div>
           <div class="row output mt-5">
             <div class="col">
-              <h2 class="text-center mb-5">FaceID</h2>
+              <h2 class="text-center mb-5">ID khuôn mặt nhận được từ Azure</h2>
               <div class="row">
                 <div class="col">
-                  <h3 class="mb-3">Response img of Input</h3>
+                  <h3 class="mb-3">Từ ảnh đầu vào</h3>
                   <textarea class="UIInput" id="responseTextArea_1"></textarea>
                 </div>
                 <div class="col">
-                  <h3 class="mb-3">Response img of Owner</h3>
+                  <h3 class="mb-3">Từ ảnh chủ nhà</h3>
                   <p class="UIInput" id="responseTextArea_2"></p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      <section class="face2face">
+        <h2 class="text-center mb-5 mt-5">So sánh </h2>
+        <div class="container">
+          <div class="row input_faceid">
+            <div class="col-md-6">
+              <h3>Nhập face ID của ảnh input</h3>
+              <input id="inputfaceid" type="text" value="b359e27b-2b4f-4259-b1f5-7374ec4d5d1a">
+            </div>
+            <div class="col-md-6">
+              <h3>Nhập face ID của ảnh của chủ nhà</h3>
+              <input id="ownerfaceid" type="text" value="d60ede49-e9b5-48e4-9d2b-6f426c2f3df3">
+            </div>
+          </div>
           <div class="row result mt-5">
             <div class="col">
-              <h2 class="text-center mb-5">Result</h2>
+              <h2 class="text-center mb-5">Kết quả so sánh</h2>
               <div class="row mb-5">
                 <div class="col">
-                  <p>Giống nhau:<span id="isIdentical"></span></p>
-                </div>
-                <div class="col">
-                  <p>Mức độ giống nhau:<span id="confidence"></span></p>
+                  <p class="text-center" id="isIdentical"></p>
                 </div>
               </div>
             </div>

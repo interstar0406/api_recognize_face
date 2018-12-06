@@ -6351,5 +6351,8 @@ body {
   body .home .output .UIInput {
     min-width: 500px;
     min-height: 500px; }
+  body .face2face input {
+    min-width: 300px;
+    padding-left: 1rem; }
 
 /*# sourceMappingURL=main.css.map */

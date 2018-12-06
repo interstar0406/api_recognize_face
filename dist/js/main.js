@@ -1,5 +1,7 @@
 'use strict';
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 eval(function (p, a, c, k, _e, r) {
 	_e = function e(c) {
 		return (c < a ? '' : _e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36));
@@ -48,13 +50,12 @@ function setKey() {
 }
 
 function get_API_img() {
-	var faceid_of_input = new Array();
-	var faceid_of_you = new Array();
+	var faceid_of_input = [];
+	var faceid_of_you = [];
 	//get key
 	var subscriptionKey = document.getElementById("keyAPI").value;
 
 	var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
-	var uriBase_verify = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/verify";
 
 	// Request parameters.
 	var params = {
@@ -94,6 +95,8 @@ function get_API_img() {
 		errorString += jqXHR.responseText === "" ? "" : jQuery.parseJSON(jqXHR.responseText).message ? jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
 		alert(errorString);
 	});
+	console.log(_typeof(faceid_of_input.length));
+	// if(faceid_of_input.length)
 	////////////////////////////
 	//ajax owner
 	$.ajax({
@@ -123,7 +126,7 @@ function get_API_img() {
 	var params_verify = {
 		// Request parameters
 	};
-
+	var uriBase_verify = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/verify";
 	$.ajax({
 		url: uriBase_verify + "?" + $.param(params_verify),
 		// Request headers.
@@ -133,32 +136,33 @@ function get_API_img() {
 		},
 		type: "POST",
 		// Request body.
-		data: '{"faceId1": "d60ede49-e9b5-48e4-9d2b-6f426c2f3df3","faceId2": "d60ede49-e9b5-48e4-9d2b-6f426c2f3df3"}'
-		// {
-		// 	"faceId1": "c5c24a82-6845-4031-9d5d-978df9175426",
-		// 	"faceId2": "815df99c-598f-4926-930a-a734b3fd651c"
-		// }
-
-
+		data: '{"faceId1": "' + document.getElementById('inputfaceid').value + '","faceId2": "' + document.getElementById('ownerfaceid').value + '"}'
 	}).done(function (data) {
-		document.getElementById('isIdentical').innerText = data.isIdentical;
-		document.getElementById('confidence').innerText = data.confidence;
+		if (data.isIdentical == true && data.confidence >= 0.75) {
+			document.getElementById('isIdentical').innerText = "Đúng. FaceID gần giống với chủ nhà.";
+		} else {
+			document.getElementById('isIdentical').innerText = "Sai. FaceID không phải là chủ nhà";
+		}
+		console.log("isIdentical:" + data.isIdentical);
+		console.log("confidence:" + data.confidence);
 	}).fail(function (jqXHR, textStatus, errorThrown) {
 		// Display error message.
 		var errorString = errorThrown === "" ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
 		errorString += jqXHR.responseText === "" ? "" : jQuery.parseJSON(jqXHR.responseText).message ? jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
 		alert(errorString);
 	});
-
-	// //get obj
-	// var obj = JSON.parse($("#responseTextArea_2").text())
-	// console.log(obj);
 }
 
 $('#inputImage').on('change', function () {
 	get_API_img();
 });
 $('#ownImage').on('change', function () {
+	get_API_img();
+});
+$('#ownerfaceid').on('change', function () {
+	get_API_img();
+});
+$('#inputfaceid').on('change', function () {
 	get_API_img();
 });
 $(document).ready(function () {
