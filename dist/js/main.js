@@ -35,7 +35,7 @@ $(function () {
 "use strict";
 
 ///////////////////////////////////////
-///////////////FUNCTION/////////////////
+///////////////FUNCTION////////////////
 ///////////////////////////////////////
 function setKey() {
 	var subscriptionKey = document.getElementById("keyAPI").value;
@@ -83,20 +83,16 @@ function get_API_img() {
 		// Request body.
 		data: '{"url": ' + '"' + sourceImageUrl_input + '"}'
 	}).done(function (data) {
-		console.log("FaceID of Input");
 		for (var i = 0; i < data.length; i++) {
-			faceid_of_input[i] = data[i].faceId;
+			faceid_of_input[i] = data[i];
 		}
-		$("#responseTextArea_1").val(JSON.stringify(faceid_of_input, null, 4));
-		console.log(faceid_of_input);
-		console.log(faceid_of_input.length);
+		$("#responseTextArea_1").text(JSON.stringify(faceid_of_input, null, 4));
 	}).fail(function (jqXHR, textStatus, errorThrown) {
 		// Display error message.
 		var errorString = errorThrown === "" ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
 		errorString += jqXHR.responseText === "" ? "" : jQuery.parseJSON(jqXHR.responseText).message ? jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
 		alert(errorString);
 	});
-	console.log(faceid_of_input.length);
 	////////////////////////////
 	//ajax owner
 	$.ajax({
@@ -111,12 +107,10 @@ function get_API_img() {
 		// Request body.
 		data: '{"url": ' + '"' + sourceImageUrl_owner + '"}'
 	}).done(function (data) {
-		console.log("FaceID of you:");
 		for (var i = 0; i < data.length; i++) {
 			faceid_of_you = data[i].faceId;
-			console.log(faceid_of_you);
 		}
-		$("#responseTextArea_2").val(JSON.stringify(faceid_of_you, null, 4));
+		$("#responseTextArea_2").text(JSON.stringify(faceid_of_you, null, 4));
 	}).fail(function (jqXHR, textStatus, errorThrown) {
 		// Display error message.
 		var errorString = errorThrown === "" ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
@@ -139,7 +133,7 @@ function get_API_img() {
 			},
 			type: "POST",
 			// Request body.
-			data: '{"faceId1": "' + document.getElementById('faceid_of_input').innerText + '","faceId2": "' + faceid_of_you + '"}'
+			data: '{"faceId1": "' + document.getElementById('responseTextArea_1').innerText + '","faceId2": "' + document.getElementById('responseTextArea_2').innerText + '"}'
 			// {
 			// 	"faceId1": "c5c24a82-6845-4031-9d5d-978df9175426",
 			// 	"faceId2": "815df99c-598f-4926-930a-a734b3fd651c"
@@ -156,6 +150,10 @@ function get_API_img() {
 			alert(errorString);
 		});
 	}
+
+	//get obj
+	var obj = JSON.parse($("#responseTextArea_2").text());
+	console.log(obj);
 }
 
 $('#inputImage').on('change', function () {
